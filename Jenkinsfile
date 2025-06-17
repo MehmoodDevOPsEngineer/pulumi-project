@@ -14,7 +14,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        container('python') {
+        container('jnlp') {
           checkout scm
         }
       }
@@ -22,7 +22,7 @@ pipeline {
 
     stage('Install Python Dependencies') {
       steps {
-        container('python') {
+        container('jnlp') {
           sh '''
             python -m pip install --upgrade pip
             pip install -r requirements.txt
@@ -33,7 +33,7 @@ pipeline {
 
     stage('Pulumi Deploy') {
       steps {
-        container('pulumi') {
+        container('jnlp') {
           sh '''
             pulumi login
             pulumi stack select dev
